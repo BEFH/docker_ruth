@@ -14,7 +14,7 @@ RUN wget https://github.com/samtools/htslib/releases/download/1.21/htslib-1.21.t
   rm -rf htslib-1.21
 RUN git clone https://github.com/statgen/ruth.git && \
   cd ruth && mkdir build && \
-  sed -i '/^#pragma once/i #include <cstdint>' Error.h && \
+  sed -i '0,/^#include.*/s//&\n#include <cstdint>/' Error.h && \
   cd build && \
   cmake .. && \
   make && \
